@@ -16,7 +16,7 @@
                                id="form1Example13"
                                formControlName="email"
                                class="form-control form-control-lg"
-                               [ngClass]="{'is-invalid': controls.email.invalid && (controls.email.dirty || controls.email.touched)}" />
+                               [markInvalid]="controls.email" />
                         <label class="form-label"
                                for="form1Example13">Email address</label>
                         <!-- Error display -->
@@ -29,7 +29,7 @@
                                id="form1Example23"
                                formControlName="password"
                                class="form-control form-control-lg"
-                               [ngClass]="{'is-invalid': controls.password.invalid && (controls.password.dirty || controls.password.touched)}" />
+                               [markInvalid]="controls.password" />
                         <label class="form-label"
                                for="form1Example23">Password</label>
                         <!-- Error display -->

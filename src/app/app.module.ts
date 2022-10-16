@@ -6,12 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
+import { LogoutComponent } from './auth/logout/logout.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { ErrorsHandlerComponent } from './form/errors-handler/errors-handler.component';
+import { MarkInvalidDirective } from './form/mark-invalid/mark-invalid.directive';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { TestComponent } from './test/test.component';
-import { LogoutComponent } from './auth/logout/logout.component';
-import { ErrorsHandlerComponent } from './form/errors-handler/errors-handler.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { ErrorsHandlerComponent } from './form/errors-handler/errors-handler.com
         LoginComponent,
         RegisterComponent,
         LogoutComponent,
-        ErrorsHandlerComponent
+        ErrorsHandlerComponent,
+        MarkInvalidDirective
     ],
     imports: [
         BrowserModule,
