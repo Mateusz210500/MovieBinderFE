@@ -1,0 +1,52 @@
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center flex-row-reverse justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                     class="img-fluid flip-image"
+                     alt="Phone image">
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <h1 class="display-6 mb-4 fw-semibold">Register</h1>
+                <form [formGroup]="Register"
+                      (ngSubmit)="register()">
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="email"
+                               id="form1Example13"
+                               formControlName="email"
+                               class="form-control form-control-lg"
+                               [ngClass]="{'is-invalid': controls.email.invalid && (controls.email.dirty || controls.email.touched)}" />
+                        <label class="form-label"
+                               for="form1Example13">Email address</label>
+                        <!-- Error display -->
+                        <app-errors-handler [value]="controls.email"></app-errors-handler>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password"
+                               id="form1Example23"
+                               formControlName="password"
+                               class="form-control form-control-lg"
+                               [ngClass]="{'is-invalid': controls.password.invalid && (controls.password.dirty || controls.password.touched)}" />
+                        <label class="form-label"
+                               for="form1Example23">Password</label>
+                        <!-- Error display -->
+                        <app-errors-handler [value]="controls.password"></app-errors-handler>
+                    </div>
+
+                    <div class="d-flex justify-content-between flex-column flex-lg-row align-items-center mb-4 me-2">
+
+                        <!-- Submit button -->
+                        <button type="submit"
+                                class="btn btn-primary btn-lg btn-block col-md-8 col-lg-7 col-xl-6">Register</button>
+
+                        <a class="py-2"
+                           routerLink="/login">Already have an account?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

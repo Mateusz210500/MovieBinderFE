@@ -1,0 +1,12 @@
+<div *ngIf="value?.invalid && (value?.dirty || value?.touched)"
+     class="alert alert-danger small-alert">
+    <div *ngIf=" value?.errors?.['email']">
+        Value must be an email.
+    </div>
+    <div *ngIf="value?.errors?.['required']">
+        Field is required
+    </div>
+    <div *ngIf="value?.errors?.['minlength']">
+        Field needs at least {{value?.errors?.['minlength']?.requiredLength}} characters
+    </div>
+</div>

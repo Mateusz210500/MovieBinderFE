@@ -1,0 +1,40 @@
+{
+    // editor settings
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 180,
+    "editor.fontSize": 16,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "files.trimTrailingWhitespace": true,
+    // settings for HTML
+    "html.format.wrapAttributes": "force-aligned",
+    "html.format.endWithNewline": true,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    // settings for JS
+    "javascript.preferences.quoteStyle": "single",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    // settings for TS
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    // prettier
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 120,
+    "prettier.quoteProps": "consistent",
+    "search.useIgnoreFiles": false,
+    // additional
+    "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "Monokai Pro",
+    "remote.SSH.remotePlatform": {
+        "mateuszmy.d.tomandco.zone": "linux"
+    },
+    "diffEditor.renderSideBySide": false,
+    "diffEditor.codeLens": true,
+    "git.mergeEditor": false,
+}
