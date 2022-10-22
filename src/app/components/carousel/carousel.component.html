@@ -1,0 +1,49 @@
+<div id="carouselExampleCaptions"
+     class="carousel slide"
+     data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"></button>
+        <ng-container *ngFor="let movie of movies; index as i; first as isFirst">
+            <button *ngIf="!isFirst"
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    attr.data-bs-slide-to="{{i}}"
+                    attr.aria-label="Slide {{i+1}}"></button>
+        </ng-container>
+    </div>
+    <div class="carousel-inner">
+        <ng-container *ngFor="let movie of movies; index as i; first as isFirst">
+            <div class="carousel-item"
+                 [class.active]="isFirst">
+                <img src="https://image.tmdb.org/t/p/original{{movie.image}}"
+                     class="d-block w-100"
+                     alt="{{movie.title}}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{movie.title}}</h5>
+                    <p class="text-truncate">{{movie.subtitle}}</p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <button class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"
+              aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon"
+              aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

@@ -13,6 +13,10 @@ import { MarkInvalidDirective } from './form/mark-invalid/mark-invalid.directive
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { TestComponent } from './test/test.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { SearchComponent } from './search/search.component';
+import { ListingComponent } from './listing/listing.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +28,11 @@ import { TestComponent } from './test/test.component';
         RegisterComponent,
         LogoutComponent,
         ErrorsHandlerComponent,
-        MarkInvalidDirective
+        MarkInvalidDirective,
+        CarouselComponent,
+        SliderComponent,
+        SearchComponent,
+        ListingComponent
     ],
     imports: [
         BrowserModule,

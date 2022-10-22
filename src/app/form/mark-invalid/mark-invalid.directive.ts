@@ -13,6 +13,8 @@ export class MarkInvalidDirective {
     ngDoCheck() {
         if (this.markInvalid?.invalid && (this.markInvalid?.dirty || this.markInvalid?.touched)) {
             this.el.nativeElement.classList.add('is-invalid')
+        } else {
+            this.el.nativeElement.classList.remove('is-invalid')
         }
     }
 

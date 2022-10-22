@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class UserService {
-
     PATH_OF_API = 'http://localhost:3000';
     constructor(private httpClient: HttpClient) { }
 
@@ -20,5 +19,4 @@ export class UserService {
     public logout() {
         return this.httpClient.get(this.PATH_OF_API + "/auth/signout", { withCredentials: true })
     }
-
 }

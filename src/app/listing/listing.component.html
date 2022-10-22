@@ -1,0 +1,63 @@
+<ng-container [ngSwitch]="movies.length > 0">
+    <div class="d-flex flex-wrap justify-content-center"
+         *ngSwitchCase="true">
+        <div class="w-100 d-flex justify-content-center">
+            <h1>Search results for: {{orderObj.params.key}}</h1>
+        </div>
+        <ng-container *ngFor="let movie of movies">
+            <div class="card m-3"
+                 style="width: 18rem;">
+                <img *ngIf="movie.image"
+                     src="https://image.tmdb.org/t/p/w500{{movie.image}}"
+                     class="card-img-top"
+                     alt="{{movie.title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <p class="card-text text-truncate">{{movie.subtitle}}</p>
+                    <a href="#"
+                       class="btn btn-primary">View more</a>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div *ngSwitchDefault
+         class="d-flex justify-content-center">
+        No results
+    </div>
+</ng-container>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link"
+               href="#">1</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">2</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">3</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">4</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">5</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">6</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">1</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">2</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">3</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">4</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">5</a></li>
+        <li class="page-item"><a class="page-link"
+               href="#">6</a></li>
+        <li class="page-item">
+            <a class="page-link"
+               href="#">Next</a>
+        </li>
+    </ul>
+</nav>

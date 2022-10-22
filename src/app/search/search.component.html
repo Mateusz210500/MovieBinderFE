@@ -1,0 +1,32 @@
+<div class="offcanvas offcanvas-top"
+     style="height: 10rem"
+     tabindex="1"
+     data-bs-scroll="true"
+     data-bs-backdrop="false"
+     id="offcanvasTop"
+     aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title"
+            id="offcanvasTopLabel">Search for a movie:</h5>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="input-group">
+            <input type="text"
+                   class="form-control"
+                   [(ngModel)]="searchInput"
+                   placeholder="Movie title"
+                   aria-label="Movie title"
+                   aria-describedby="button-addon2">
+            <button class="btn btn-primary"
+                    data-bs-dismiss="offcanvas"
+                    type="button"
+                    id="button-addon2"
+                    [routerLink]="['/listing']"
+                    [queryParams]="{ key: searchInput}">Search</button>
+        </div>
+    </div>
+</div>

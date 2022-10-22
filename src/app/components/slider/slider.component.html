@@ -1,0 +1,55 @@
+<!-- Carousel wrapper -->
+<div id="carouselMultiItemExample"
+     class="carousel slide carousel-dark text-center"
+     data-bs-ride="carousel">
+    <!-- Controls -->
+    <div class="d-flex justify-content-center mb-4">
+        <button class="carousel-control-prev position-relative"
+                type="button"
+                data-bs-target="#carouselMultiItemExample"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"
+                  aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next position-relative"
+                type="button"
+                data-bs-target="#carouselMultiItemExample"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon"
+                  aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Inner -->
+    <div class="carousel-inner py-4">
+        <ng-container *ngFor="let array of list; first as isFirst">
+            <!-- Single item -->
+            <div class="carousel-item"
+                 [class.active]="isFirst">
+                <div class="container">
+                    <div class="row">
+                        <ng-container *ngFor="let movie of array; first as isFirst">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <img src="https://image.tmdb.org/t/p/w500{{movie.image}}"
+                                         class="card-img-top"
+                                         alt="Waterfall" />
+                                    <div class="card-body">
+                                        <h5 class="card-title text-truncate">{{movie.title}}</h5>
+                                        <p class="card-text">
+                                            {{movie.subtitle?.slice(0, 90)}}...
+                                        </p>
+                                        <a href="#!"
+                                           class="btn btn-primary">View more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
