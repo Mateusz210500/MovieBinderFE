@@ -30,4 +30,22 @@ export class MoviesService {
 
         return this.httpClient.get(this.PATH_OF_API + "/search/movie", { params: params })
     }
+
+    public getVideos(id: number,) {
+        let params = new HttpParams();
+        params = params.append('api_key', this.API_KEY);
+        params = params.append('language', 'en-US');
+        params = params.append('id', id);
+
+        return this.httpClient.get(this.PATH_OF_API + `/movie/${id}/videos`, { params: params })
+    }
+
+    public getDetails(id: number,) {
+        let params = new HttpParams();
+        params = params.append('api_key', this.API_KEY);
+        params = params.append('language', 'en-US');
+        params = params.append('movie_id', id);
+
+        return this.httpClient.get(this.PATH_OF_API + `/movie/${id}`, { params: params })
+    }
 }

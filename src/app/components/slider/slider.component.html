@@ -40,7 +40,8 @@
                                         <p class="card-text">
                                             {{movie.subtitle?.slice(0, 90)}}...
                                         </p>
-                                        <a href="#!"
+                                        <a [routerLink]="['/details']"
+                                           [queryParams]="{ id: movie.id}"
                                            class="btn btn-primary">View more</a>
                                     </div>
                                 </div>

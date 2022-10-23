@@ -19,6 +19,7 @@ export class TestComponent implements OnInit {
             this.movies = result.results
             this.carouselMovies = result.results.slice(0, 3).map((el: any) => {
                 return {
+                    id: el.id,
                     image: el.backdrop_path,
                     title: el.title,
                     subtitle: el.overview,
@@ -27,6 +28,7 @@ export class TestComponent implements OnInit {
             })
             this.sliderMovies = result.results.slice(0, 9).map((el: any) => {
                 return {
+                    id: el.id,
                     image: el.backdrop_path,
                     title: el.title,
                     subtitle: el.overview,

@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
 
 export interface IMovie {
+    id: number;
     image: string;
     title?: string;
     subtitle?: string;
@@ -25,6 +26,5 @@ export class SliderComponent {
             this.list.push(this.movies.slice(i * 3, i * 3 + 3))
         }
         this.changeDetectorRef.detectChanges()
-        console.log(this.list)
     }
 }

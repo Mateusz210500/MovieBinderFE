@@ -1,0 +1,12 @@
+.overlay {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(81deg, rgba(0, 0, 0, 0.6181066176470589) 0%, rgba(0, 0, 0, 0.3744091386554622) 36%, rgba(233, 233, 233, 0) 100%);
+}

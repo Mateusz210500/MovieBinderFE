@@ -1,13 +1,12 @@
-<div class="offcanvas offcanvas-top"
-     style="height: 10rem"
+<div class="offcanvas offcanvas-top background"
      tabindex="1"
      data-bs-scroll="true"
      data-bs-backdrop="false"
      id="offcanvasTop"
      aria-labelledby="offcanvasTopLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title"
-            id="offcanvasTopLabel">Search for a movie:</h5>
+        <h4 class="offcanvas-title"
+            id="offcanvasTopLabel">Search for a movie:</h4>
         <button type="button"
                 class="btn-close"
                 data-bs-dismiss="offcanvas"
@@ -20,13 +19,14 @@
                    [(ngModel)]="searchInput"
                    placeholder="Movie title"
                    aria-label="Movie title"
-                   aria-describedby="button-addon2">
+                   aria-describedby="button-addon2"
+                   focusedInput>
             <button class="btn btn-primary"
                     data-bs-dismiss="offcanvas"
                     type="button"
                     id="button-addon2"
                     [routerLink]="['/listing']"
-                    [queryParams]="{ key: searchInput}">Search</button>
+                    [queryParams]="{ key: searchInput, page: 1}">Search</button>
         </div>
     </div>
 </div>
