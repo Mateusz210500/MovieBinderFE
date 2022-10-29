@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/_services/user.service';
+import { UserService } from 'src/app/_services/auth.service';
 
 interface resultData {
     message?: string,

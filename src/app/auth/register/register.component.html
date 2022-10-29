@@ -13,12 +13,12 @@
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <input type="email"
-                               id="form1Example13"
+                               id="emailInput"
                                formControlName="email"
                                class="form-control form-control-lg"
                                [markInvalid]="controls.email" />
                         <label class="form-label"
-                               for="form1Example13">Email address</label>
+                               for="emailInput">Email address</label>
                         <!-- Error display -->
                         <app-errors-handler [value]="controls.email"></app-errors-handler>
                     </div>
@@ -26,14 +26,27 @@
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                         <input type="password"
-                               id="form1Example23"
+                               id="passwordInput"
                                formControlName="password"
                                class="form-control form-control-lg"
                                [markInvalid]="controls.password" />
                         <label class="form-label"
-                               for="form1Example23">Password</label>
+                               for="passwordInput">Password</label>
                         <!-- Error display -->
                         <app-errors-handler [value]="controls.password"></app-errors-handler>
+                    </div>
+
+                    <!-- Nickname input -->
+                    <div class="form-outline mb-4">
+                        <input type="nickname"
+                               id="nicknameInput"
+                               formControlName="nickname"
+                               class="form-control form-control-lg"
+                               [markInvalid]="controls.nickname" />
+                        <label class="form-label"
+                               for="nicknameInput">Nickname</label>
+                        <!-- Error display -->
+                        <app-errors-handler [value]="controls.nickname"></app-errors-handler>
                     </div>
 
                     <div class="d-flex justify-content-between flex-column flex-lg-row align-items-center mb-4 me-2">

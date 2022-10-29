@@ -22,6 +22,7 @@ import { ErrorsHandlerComponent } from './shared/components/form/errors-handler/
 import { MarkInvalidDirective } from './shared/components/form/mark-invalid/mark-invalid.directive';
 import { SafePipe } from './shared/pipes/safe.pipe';
 import { TestComponent } from './test/test.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { TestComponent } from './test/test.component';
         DetailsComponent,
         RatingComponent,
         FooterComponent,
-        SafePipe
+        SafePipe,
+        ProfileComponent
     ],
     imports: [
         NgbModule,
