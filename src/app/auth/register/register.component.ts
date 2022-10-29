@@ -25,9 +25,7 @@ export class RegisterComponent {
         if (this.Register.valid) {
             this.userService.register(this.Register.value).subscribe((result: any) => {
                 this.router.navigate(['login']);
-            })
-        } else {
-            console.log(this.Register)
+            }, (error) => { console.error('An error occurred:', error) })
         }
     }
 

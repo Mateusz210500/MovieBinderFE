@@ -1,9 +1,11 @@
-<div class="d-flex justify-content-center flex-wrap background">
+<div class="d-flex justify-content-center flex-wrap background"
+     *ngIf="carouselMovies?.length">
     <h1 class="mt-3 text-black">Most popular movies</h1>
     <div class="shadow w-75 mt-2 mb-5">
         <app-carousel [movies]="carouselMovies"></app-carousel>
     </div>
 </div>
-<div class="mt-5">
+<div class="mt-5"
+     *ngIf="sliderMovies?.length">
     <app-slider [movies]="sliderMovies"></app-slider>
 </div>

@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -7,14 +7,15 @@ import { NavigationEnd, Router } from '@angular/router';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    showHeader = true;
-    constructor(private zone: NgZone, private router: Router) {
+    showHeaderFooter = true;
+
+    constructor(private router: Router) {
         this.router.events.subscribe((event: any) => {
             if (event instanceof NavigationEnd) {
                 if (event.url === '/login' || event.url === '/register') {
-                    this.showHeader = false;
+                    this.showHeaderFooter = false;
                 } else {
-                    this.showHeader = true;
+                    this.showHeaderFooter = true;
                 }
             }
         });

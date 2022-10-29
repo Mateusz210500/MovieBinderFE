@@ -18,7 +18,7 @@ export class LogoutComponent {
                 localStorage.removeItem('token')
                 this.router.navigate(['login']);
             }
-        })
+        }, (error) => { console.error('An error occurred:', error) })
     }
 
 }

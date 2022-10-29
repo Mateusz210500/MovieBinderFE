@@ -5,6 +5,12 @@
     color: #d3d3d3;
 }
 
+@media (max-width: 767.98px) {
+    .star {
+        font-size: 1rem;
+    }
+}
+
 .full {
     color: red;
 }

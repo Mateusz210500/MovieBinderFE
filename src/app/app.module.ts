@@ -10,16 +10,18 @@ import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { SearchComponent } from './components/search/search.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { ErrorsHandlerComponent } from './form/errors-handler/errors-handler.component';
-import { MarkInvalidDirective } from './form/mark-invalid/mark-invalid.directive';
+import { DetailsComponent } from './details/details.component';
+import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ListingComponent } from './listing/listing.component';
-import { SearchComponent } from './search/search.component';
+import { ErrorsHandlerComponent } from './shared/components/form/errors-handler/errors-handler.component';
+import { MarkInvalidDirective } from './shared/components/form/mark-invalid/mark-invalid.directive';
+import { SafePipe } from './shared/pipes/safe.pipe';
 import { TestComponent } from './test/test.component';
-import { DetailsComponent } from './details/details.component';
-import { RatingComponent } from './components/rating/rating.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,9 @@ import { RatingComponent } from './components/rating/rating.component';
         SearchComponent,
         ListingComponent,
         DetailsComponent,
-        RatingComponent
+        RatingComponent,
+        FooterComponent,
+        SafePipe
     ],
     imports: [
         NgbModule,

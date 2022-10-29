@@ -30,11 +30,10 @@ export class LoginComponent {
         if (this.Login.valid) {
             this.userService.login(this.Login.value).subscribe((result: resultData) => {
                 if (result.spaToken) {
-                    console.log(result, result.spaToken)
                     this.router.navigate(['']);
                     localStorage.setItem('token', result.spaToken)
                 }
-            })
+            }, (error) => { console.error('An error occurred:', error) })
         }
     }
 

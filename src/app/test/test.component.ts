@@ -35,7 +35,7 @@ export class TestComponent implements OnInit {
 
                 }
             })
-        })
+        }, (error) => { console.error('An error occurred:', error) })
     }
 
 }

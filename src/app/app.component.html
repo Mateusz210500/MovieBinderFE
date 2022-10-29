@@ -1,2 +1,7 @@
-<app-header *ngIf="showHeader"></app-header>
-<router-outlet></router-outlet>
+<app-header #header
+            *ngIf="showHeaderFooter"></app-header>
+<div class="min-vh-100">
+    <router-outlet></router-outlet>
+</div>
+<app-footer #footer
+            *ngIf="showHeaderFooter"></app-footer>

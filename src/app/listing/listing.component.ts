@@ -41,7 +41,7 @@ export class ListingComponent {
                         }
                     })
                 })
-            });
+            }, (error) => { console.error('An error occurred:', error) });
     }
 
     loadPage(page: number) {

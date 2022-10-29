@@ -3,25 +3,26 @@
         <iframe class="embed-responsive-item"
                 width="1000"
                 height="520"
-                [src]="videoURL"></iframe>
+                [src]="videoURL | safe:'resourceUrl'"></iframe>
     </div>
     <div class="p-5 bg-black text-white text-opacity-75">
-        <h1>{{details.title}}</h1>
-        <span class="small">{{details.belongs_to_collection.name}}</span>
-        <h6 class="w-75 mt-3">{{details.overview}}</h6>
+        <h1>{{details?.title}}</h1>
+        <span class="small">{{details?.belongs_to_collection?.name}}</span>
+        <h6 class="col-12 col-md-8 mt-3">{{details?.overview}}</h6>
     </div>
 
     <div class="position-relative">
-        <img src="https://image.tmdb.org/t/p/original{{details.backdrop_path}}"
+        <img src="https://image.tmdb.org/t/p/original{{details?.backdrop_path}}"
              class="w-100"
-             alt="background image">
+             alt="background image"
+             *ngIf="details?.backdrop_path">
         <div class="overlay d-flex  align-items-center">
             <div class="p-5 text-white">
-                <h2 class="h1 pb-3">{{details.tagline}}</h2>
+                <h2 class="h1 pb-3 w-75">{{details?.tagline}}</h2>
                 <p class="m-0">Average viewer ratings:</p>
-                <app-rating [currentRate]="details.vote_average"
+                <app-rating [currentRate]="details?.vote_average"
                             [max]="10"></app-rating>
-                <pre>Number of votes: <b>{{details.vote_count}}</b></pre>
+                <pre>Number of votes: <b>{{details?.vote_count}}</b></pre>
             </div>
         </div>
     </div>

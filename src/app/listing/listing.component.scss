@@ -1,0 +1,8 @@
+.animation-up {
+    transition: all 0.8s;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 25px 13px rgba(0, 0, 0, 0.1) !important;
+    }
+}
