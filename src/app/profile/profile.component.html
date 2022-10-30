@@ -13,10 +13,12 @@
                                  style="width: 150px; z-index: 1">
                             <button type="button"
                                     class="btn btn-outline-dark"
-                                    data-mdb-ripple-color="dark"
+                                    (click)="open(content)"
                                     style="z-index: 1;">
                                 Edit profile
                             </button>
+
+
                         </div>
                         <div class="ms-3"
                              style="margin-top: 130px;">
@@ -86,3 +88,59 @@
         </div>
     </div>
 </section>
+
+<ng-template #content
+             let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title"
+            id="modal-basic-title">Profile update</h4>
+        <button type="button"
+                class="btn-close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="nickname"
+                       class="col-form-label">Nickname:</label>
+                <input type="text"
+                       class="form-control"
+                       id="nickname">
+            </div>
+            <div class="form-group">
+                <label for="about"
+                       class="col-form-label">About:</label>
+                <textarea class="form-control"
+                          id="about"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="bg-color"
+                       class="col-form-label">Background color:</label>
+                <div class="col-2">
+                    <input type="color"
+                           class="form-control"
+                           id="bg-color">
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                <label for="formFile"
+                       class="form-label">Default file input example</label>
+                <div class="mb-3">
+                    <input class="form-control"
+                           type="file"
+                           id="formFile">
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button"
+                class="btn btn-outline-danger"
+                data-dismiss="modal">Close</button>
+        <button type="button"
+                class="btn btn-primary">Send message</button>
+    </div>
+</ng-template>
