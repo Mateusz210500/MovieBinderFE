@@ -4,7 +4,8 @@
             <div class="col col-lg-9 col-xl-7">
                 <div class="card">
                     <div class="rounded-top text-white d-flex flex-row"
-                         style="background-color: #000; height:200px;">
+                         [style.backgroundColor]="userData?.backgroundColor ?? '#000'"
+                         style=" height:200px;">
                         <div class="ms-4 mt-5 d-flex flex-column"
                              style="width: 150px;">
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
@@ -91,20 +92,23 @@
 
 <ng-template #content
              let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title"
-            id="modal-basic-title">Profile update</h4>
-        <button type="button"
-                class="btn-close"
-                aria-label="Close"
-                (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-        <form>
+
+    <form [formGroup]="ProfileForm"
+          (ngSubmit)="updateProfile()">
+        <div class="modal-header">
+            <h4 class="modal-title"
+                id="modal-basic-title">Profile update</h4>
+            <button type="button"
+                    class="btn-close"
+                    aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
             <div class="form-group">
                 <label for="nickname"
                        class="col-form-label">Nickname:</label>
                 <input type="text"
+                       formControlName="nickname"
                        class="form-control"
                        id="nickname">
             </div>
@@ -112,6 +116,7 @@
                 <label for="about"
                        class="col-form-label">About:</label>
                 <textarea class="form-control"
+                          formControlName="about"
                           id="about"></textarea>
             </div>
             <div class="form-group">
@@ -120,6 +125,7 @@
                 <div class="col-2">
                     <input type="color"
                            class="form-control"
+                           formControlName="backgroundColor"
                            id="bg-color">
                 </div>
             </div>
@@ -129,18 +135,19 @@
                 <div class="mb-3">
                     <input class="form-control"
                            type="file"
-                           id="formFile">
+                           id="formFile"
+                           (change)="uploadFile($event)">
                 </div>
             </div>
 
 
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button"
-                class="btn btn-outline-danger"
-                data-dismiss="modal">Close</button>
-        <button type="button"
-                class="btn btn-primary">Send message</button>
-    </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-outline-danger"
+                    data-dismiss="modal">Close</button>
+            <button type="submit"
+                    class="btn btn-primary">Send message</button>
+        </div>
+    </form>
 </ng-template>

@@ -11,4 +11,8 @@ export class ProfileService {
     public getUser() {
         return this.httpClient.get(this.PATH_OF_API + "/users/getId", { withCredentials: true })
     }
+
+    public updateProfile(profileData: any) {
+        return this.httpClient.post(this.PATH_OF_API + "/users/update", profileData, { withCredentials: true })
+    }
 }
