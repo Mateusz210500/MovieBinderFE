@@ -8,8 +8,10 @@ export interface IUser {
     createdAt: string,
     email: string,
     id: string,
+    about: string;
     nickname: string,
     backgroundColor: string,
+    file?: string;
     updateAt: string,
 }
 
@@ -26,10 +28,16 @@ export class ProfileComponent implements OnInit {
     constructor(private profileService: ProfileService, private modalService: NgbModal, private fileService: FileService) { }
 
     ngOnInit(): void {
+        this.updateUserInfo();
+    }
+
+    updateUserInfo() {
         this.profileService.getUser().subscribe((result: any) => {
             this.userData = result.user
             this.ProfileForm.patchValue({
-                nickname: this.userData?.nickname
+                nickname: this.userData?.nickname,
+                about: this.userData?.about,
+                backgroundColor: this.userData?.backgroundColor,
             })
         }, (error) => { console.error('An error occurred:', error) })
     }
@@ -43,41 +51,34 @@ export class ProfileComponent implements OnInit {
 
     uploadFile(event: any) {
         this.file = event.target.files[0];
-        console.log(this.file)
     }
 
-    updateProfile() {
+    onUpdateProfile() {
         let fileName = ''
         if (this.file) {
             this.fileService.uploadImage(this.file).subscribe((result: any) => {
                 fileName = result.fileName
-
                 this.ProfileForm.patchValue({
                     file: fileName
                 })
-
-                this.profileService.updateProfile({
-                    nickname: this.ProfileForm.controls.nickname.value,
-                    about: this.ProfileForm.controls.about.value,
-                    backgroundColor: this.ProfileForm.controls.backgroundColor.value,
-                    file: this.ProfileForm.controls.file.value
-                }).subscribe((result: any) => {
-                    console.log(result)
-                }, (error) => { console.error('An error occurred:', error) })
-
+                this.updateProfile(true)
             }, (error) => { console.error('An error occurred:', error) })
         } else {
-            this.profileService.updateProfile({
-                nickname: this.ProfileForm.controls.nickname.value,
-                about: this.ProfileForm.controls.about.value,
-                backgroundColor: this.ProfileForm.controls.backgroundColor.value,
-                file: this.ProfileForm.controls.file.value
-            }).subscribe((result: any) => {
-                console.log(result)
-            }, (error) => { console.error('An error occurred:', error) })
+            this.updateProfile(false)
         }
     }
 
+    private updateProfile(withFile?: boolean) {
+        this.profileService.updateProfile({
+            nickname: this.ProfileForm.controls.nickname.value,
+            about: this.ProfileForm.controls.about.value,
+            backgroundColor: this.ProfileForm.controls.backgroundColor.value,
+            file: withFile ? this.ProfileForm.controls.file.value : undefined
+        }).subscribe(() => {
+            this.updateUserInfo();
+            this.modalService.dismissAll('submit')
+        }, (error) => { console.error('An error occurred:', error) })
+    }
 
     open(content: TemplateRef<any>) {
         this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
@@ -100,5 +101,8 @@ export class ProfileComponent implements OnInit {
         }
     }
 
+    get profileImage() {
+        return this.userData?.file ? `http://localhost:3000/file/${this.userData?.file}` : 'https://aquaterraenergy.com/wp-content/uploads/2021/04/profile-placeholder.png'
+    }
 }
 

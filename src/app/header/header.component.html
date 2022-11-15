@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     [ngClass]="{'nav-up': headerType === 'hideOnScroll' && !showHeader,
+                 'sticky-top hide-transition' : (headerType === 'hideOnScroll' || headerType === 'sticky')}"
+     #header>
     <div class="container-fluid">
         <svg xmlns="http://www.w3.org/2000/svg"
              width="16"
@@ -33,28 +36,32 @@
                     <a class="nav-link text-white"
                        routerLink="/test">Test</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white"
+                       routerLink="/profile">Profile</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white"
-                       href="#"
                        id="navbarDropdownMenuLink"
                        role="button"
                        data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        Dropdown link
+                        Catalogs
                     </a>
                     <ul class="dropdown-menu"
                         aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item"
-                               routerLink="/profile">Profile</a></li>
+                               routerLink="/createCatalog">Create Catalog</a></li>
                         <li><a class="dropdown-item"
-                               href="#">Element 2</a></li>
+                               href="#">Browse catalogs</a></li>
                         <li><a class="dropdown-item"
-                               href="#">Element 3</a></li>
+                               href="#">Liked catalogs</a></li>
+                        <li><a class="dropdown-item"
+                               href="#">My catalogs</a></li>
                     </ul>
                 </li>
             </ul>
             <div class="align-items-center d-flex justify-content-between flex-row-reverse flex-lg-row mt-5 mt-lg-0">
-                <!-- Button to open the offcanvas sidebar -->
                 <span class="me-3"
                       type="button"
                       data-bs-toggle="offcanvas"
@@ -76,4 +83,11 @@
         </div>
     </div>
 </nav>
-<app-search></app-search>
+<div class="offcanvas offcanvas-top background"
+     tabindex="1"
+     data-bs-scroll="true"
+     data-bs-backdrop="false"
+     id="offcanvasTop"
+     aria-labelledby="offcanvasTopLabel">
+    <app-search></app-search>
+</div>

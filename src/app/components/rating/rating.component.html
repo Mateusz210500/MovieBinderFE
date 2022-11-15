@@ -7,10 +7,13 @@
     </span>
 </ng-template>
 
-<ngb-rating [(rate)]="currentRate"
+<ngb-rating [style.font-size]="heartsSize"
+            [(rate)]="currentRate"
             [starTemplate]="t"
             [readonly]="true"
             [max]="max"></ngb-rating>
 
-<hr style="width: 29rem;" />
-<pre class="m-0">Rate: <b>{{currentRate}}</b> / <b>{{max}}</b></pre>
+<ng-container *ngIf="showNumbers">
+    <hr style="width: 29rem;" />
+    <pre class="m-0">Rate: <b>{{currentRate}}</b> / <b>{{max}}</b></pre>
+</ng-container>

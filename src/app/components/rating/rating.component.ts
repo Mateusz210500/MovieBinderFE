@@ -8,4 +8,6 @@ import { Component, Input } from '@angular/core';
 export class RatingComponent {
     @Input() max: number = 0;
     @Input() currentRate: number = 0;
+    @Input() heartsSize: string = "3rem"
+    @Input() showNumbers: boolean = true
 }

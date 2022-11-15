@@ -6,16 +6,16 @@ export interface IMovie {
     image: string;
     title?: string;
     subtitle?: string;
+    rating: number
 }
 
-
 @Component({
-    selector: 'app-slider',
-    templateUrl: './slider.component.html',
-    styleUrls: ['./slider.component.scss']
+    selector: 'app-slider-rating',
+    templateUrl: './slider-rating.component.html',
+    styleUrls: ['./slider-rating.component.scss']
 })
-export class SliderComponent {
-    @Input() movies: IMovie[] = [];
+export class SliderRatingComponent {
+    @Input() movies: any = [];
     list: IMovie[][] = [];
 
     constructor(public breakpointObserver: BreakpointObserver) { }
@@ -25,9 +25,11 @@ export class SliderComponent {
             .observe(['(min-width: 992px)', '(max-width: 992px)', '(max-width: 1200px)'])
             .subscribe((state: BreakpointState) => {
                 if (state.breakpoints['(max-width: 992px)']) {
-                    this.setMovieList(1)
+                    this.setMovieList(2)
+                } else if (state.breakpoints['(min-width: 992px)'] && state.breakpoints['(max-width: 1200px)']) {
+                    this.setMovieList(4)
                 } else {
-                    this.setMovieList(3)
+                    this.setMovieList(6)
                 }
             });
     }

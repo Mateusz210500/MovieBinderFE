@@ -1,6 +1,7 @@
 <app-header #header
-            *ngIf="showHeaderFooter"></app-header>
-<div class="min-vh-100">
+            *ngIf="showHeaderFooter"
+            [headerType]="'hideOnScroll'"></app-header>
+<div class="min-page-height">
     <router-outlet></router-outlet>
 </div>
 <app-footer #footer

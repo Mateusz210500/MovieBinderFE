@@ -1,0 +1,11 @@
+.hide-transition {
+    transition: top 0.2s ease-in-out;
+}
+
+.nav-up {
+    top: calc(var(--header-height) * -1);
+}
+
+.header-container {
+    height: var(--header-height);
+}

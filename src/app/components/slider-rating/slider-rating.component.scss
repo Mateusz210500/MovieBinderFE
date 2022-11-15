@@ -1,0 +1,41 @@
+.button-background {
+    background-color: rgba(171, 171, 171, 0.387);
+    backdrop-filter: blur(2px);
+
+    &:hover {
+        background-color: rgba(153, 153, 153, 0.443);
+        backdrop-filter: blur(5px);
+    }
+}
+
+#carouselMultiItem {
+    &:hover>#buttonLeft {
+        display: block !important;
+    }
+
+    &:hover>#buttonRight {
+        display: block !important;
+    }
+}
+
+#buttonLeft {
+    display: none !important;
+    left: 2.5rem;
+    bottom: 45%;
+
+    @media (max-width: 992px) {
+        left: 0.5rem;
+        display: block !important;
+    }
+}
+
+#buttonRight {
+    display: none !important;
+    right: 2.5rem;
+    bottom: 45%;
+
+    @media (max-width: 992px) {
+        right: 0.5rem;
+        display: block !important;
+    }
+}

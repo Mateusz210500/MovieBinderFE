@@ -23,6 +23,9 @@ import { MarkInvalidDirective } from './shared/components/form/mark-invalid/mark
 import { SafePipe } from './shared/pipes/safe.pipe';
 import { TestComponent } from './test/test.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CreateCatalogComponent } from './create-catalog/create-catalog.component';
+import { MoviesListComponent } from './create-catalog/movies-list/movies-list.component';
+import { SliderRatingComponent } from './components/slider-rating/slider-rating.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +46,10 @@ import { ProfileComponent } from './profile/profile.component';
         RatingComponent,
         FooterComponent,
         SafePipe,
-        ProfileComponent
+        ProfileComponent,
+        CreateCatalogComponent,
+        MoviesListComponent,
+        SliderRatingComponent
     ],
     imports: [
         NgbModule,

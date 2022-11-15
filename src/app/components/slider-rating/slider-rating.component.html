@@ -1,0 +1,69 @@
+<!-- Carousel wrapper -->
+<div id="carouselMultiItem"
+     class="carousel slide carousel-dark text-center"
+     data-bs-ride="carousel show-buttons">
+
+    <!-- Inner -->
+    <div class="carousel-inner py-4 position-relative">
+        <ng-container *ngFor="let array of list; first as isFirst">
+            <!-- Single item -->
+            <div class="carousel-item"
+                 [class.active]="isFirst">
+                <div class="container">
+                    <div class="row">
+                        <ng-container *ngFor="let movie of array; first as isFirst">
+                            <div class="col-6 col-lg-3 col-xl-2">
+                                <div class="card big-shadow">
+                                    <a class="overflow-hidden"
+                                       [routerLink]="['/details']"
+                                       [queryParams]="{ id: movie.id}">
+                                        <img src="https://image.tmdb.org/t/p/w500{{movie.image}}"
+                                             class="card-img-top image-zoom"
+                                             alt="movie.image"
+                                             style="min-height: 18rem;" />
+                                    </a>
+                                    <div class="card-body d-flex flex-wrap">
+                                        <h6 class="card-title text-truncate w-100">{{movie.title}}</h6>
+                                        <div class="d-flex flex-wrap">
+                                            <div class="me-3">
+                                                <app-rating *ngIf="movie.rating"
+                                                            [showNumbers]="false"
+                                                            [heartsSize]="'1rem'"
+                                                            [currentRate]="movie.rating / 2"
+                                                            [max]="5"></app-rating>
+                                            </div>
+                                            <p class="me-5 me-md-0">{{movie.rating}} / 10</p>
+                                        </div>
+                                        <div class="w-100">
+                                            <a [routerLink]="['/details']"
+                                               [queryParams]="{ id: movie.id}"
+                                               class="btn btn-primary">View more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <!-- Controls -->
+    <button class="btn btn-outline button-background position-absolute"
+            type="button"
+            data-bs-target="#carouselMultiItem"
+            data-bs-slide="prev"
+            id="buttonLeft">
+        <span class="carousel-control-prev-icon"
+              aria-hidden="true"></span>
+    </button>
+    <button class="btn btn-outline button-background position-absolute"
+            type="button"
+            data-bs-target="#carouselMultiItem"
+            data-bs-slide="next"
+            id="buttonRight">
+        <span class="carousel-control-next-icon"
+              aria-hidden="true"></span>
+    </button>
+</div>

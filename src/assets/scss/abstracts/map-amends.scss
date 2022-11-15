@@ -1,4 +1,6 @@
 $custom-colors: (
-    "custom-color": #900
+    "alice-blue": #f8f9fa,
+    "dim-gray": #676767,
+    "night-rider": #353535
 );
 $theme-colors: map-merge($theme-colors , $custom-colors )

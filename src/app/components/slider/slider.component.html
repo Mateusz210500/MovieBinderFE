@@ -1,20 +1,20 @@
 <!-- Carousel wrapper -->
-<div id="carouselMultiItem"
+<div id="sliderCarousel"
      class="carousel slide carousel-dark text-center"
      data-bs-ride="carousel">
     <!-- Controls -->
     <div class="d-flex justify-content-center mb-4">
-        <button class="carousel-control-prev position-relative"
+        <button class="carousel-control-prev position-relative me-5 me-md-0"
                 type="button"
-                data-bs-target="#carouselMultiItem"
+                data-bs-target="#sliderCarousel"
                 data-bs-slide="prev">
             <span class="carousel-control-prev-icon"
                   aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next position-relative"
+        <button class="carousel-control-next position-relative  ms-5 ms-md-0"
                 type="button"
-                data-bs-target="#carouselMultiItem"
+                data-bs-target="#sliderCarousel"
                 data-bs-slide="next">
             <span class="carousel-control-next-icon"
                   aria-hidden="true"></span>
@@ -31,10 +31,14 @@
                     <div class="row">
                         <ng-container *ngFor="let movie of array; first as isFirst">
                             <div class="col-lg-4">
-                                <div class="card">
-                                    <img src="https://image.tmdb.org/t/p/w500{{movie.image}}"
-                                         class="card-img-top"
-                                         alt="movie.image" />
+                                <div class="card shadow">
+                                    <a class="overflow-hidden"
+                                       [routerLink]="['/details']"
+                                       [queryParams]="{ id: movie.id}">
+                                        <img src="https://image.tmdb.org/t/p/w500{{movie.image}}"
+                                             class="card-img-top image-zoom"
+                                             alt="movie.image" />
+                                    </a>
                                     <div class="card-body">
                                         <h5 class="card-title text-truncate">{{movie.title}}</h5>
                                         <p class="card-text">

@@ -13,6 +13,7 @@ export class TestComponent implements OnInit {
     movies = [];
     carouselMovies = [];
     sliderMovies = [];
+    sliderRatingMovies = [];
 
     ngOnInit(): void {
         this.moviesService.getPopular().subscribe((result: any) => {
@@ -26,12 +27,23 @@ export class TestComponent implements OnInit {
 
                 }
             })
+            console.log(result)
             this.sliderMovies = result.results.slice(0, 9).map((el: any) => {
                 return {
                     id: el.id,
                     image: el.backdrop_path,
                     title: el.title,
                     subtitle: el.overview,
+
+                }
+            })
+            this.sliderRatingMovies = result.results.slice(0, 18).map((el: any) => {
+                return {
+                    id: el.id,
+                    image: el.poster_path,
+                    title: el.title,
+                    subtitle: el.overview,
+                    rating: el.vote_average
 
                 }
             })
