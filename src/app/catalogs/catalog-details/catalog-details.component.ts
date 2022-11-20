@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { IMovie } from '../listing/listing.component';
-import { MoviesService } from '../_services/movies.service';
+import { IMovie } from '../../listing/listing.component';
+import { MoviesService } from '../../_services/movies.service';
 
 @Component({
-    selector: 'app-create-catalog',
-    templateUrl: './create-catalog.component.html',
-    styleUrls: ['./create-catalog.component.scss']
+    selector: 'app-catalog-details',
+    templateUrl: './catalog-details.component.html',
+    styleUrls: ['./catalog-details.component.scss']
 })
-export class CreateCatalogComponent {
+export class CatalogDetailsComponent {
 
     constructor(private moviesService: MoviesService) { }
 
