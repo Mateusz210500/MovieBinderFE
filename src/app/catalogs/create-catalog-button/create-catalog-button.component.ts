@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Output, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CatalogsService } from '../../_services/catalogs.service';
@@ -12,6 +12,7 @@ import { FileService } from '../../_services/file.service';
 export class CreateCatalogButtonComponent {
     closeResult = '';
     file: File | null = null;
+    @Output() createdCatalogEvent = new EventEmitter();
 
     constructor(private modalService: NgbModal, private fileService: FileService, private catalogService: CatalogsService) { }
 
@@ -47,7 +48,8 @@ export class CreateCatalogButtonComponent {
             file: withFile ? this.CreateCatalogForm.controls.file.value : undefined
         }).subscribe(() => {
             // this.updateCatalogsInfo();
-            this.modalService.dismissAll('submit')
+            this.modalService.dismissAll('submit');
+            this.createdCatalogEvent.emit();
         }, (error) => { console.error('An error occurred:', error) })
     }
 

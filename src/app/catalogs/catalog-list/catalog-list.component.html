@@ -1,1 +1,8 @@
-<p>List of catalogs:</p>
+<div>
+    <p>List of my catalogs:</p>
+    <div class="list-group">
+        <a href="#"
+           class="list-group-item list-group-item-action"
+           *ngFor="let catalog of myCatalogs">{{catalog.title}}</a>
+    </div>
+</div>
