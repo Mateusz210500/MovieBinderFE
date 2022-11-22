@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface Catalog {
@@ -23,5 +23,11 @@ export class CatalogsService {
 
     public getMyCatalogs() {
         return this.httpClient.get(this.PATH_OF_API + "/catalogs/getMyCatalogs", { withCredentials: true })
+    }
+
+    public getCatalogById(id: number) {
+        let params = new HttpParams();
+        params = params.append('id', id);
+        return this.httpClient.get(this.PATH_OF_API + `/catalogs/${id}`, { withCredentials: true })
     }
 }

@@ -1,0 +1,17 @@
+<div class="w-100 d-flex justify-content-between align-items-center movie-hover"
+     *ngIf="movie">
+    <div class="d-flex">
+        <img *ngIf="movie.backdrop_path && showImage"
+             src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}"
+             class="card-img-top p-2 ms-4"
+             style="height: 5rem;"
+             alt="{{movie.title}}">
+        <div class="col-12">
+            <h5 class="card-title m-2">{{movie.title}}</h5>
+            <p class="ms-2">{{movie.tagline}}</p>
+        </div>
+    </div>
+    <a [routerLink]="['/details']"
+       [queryParams]="{ id: movie.id}"
+       class="btn btn-outline-light m-2 me-4">View more</a>
+</div>

@@ -29,6 +29,8 @@ import { SafePipe } from './shared/pipes/safe.pipe';
 import { TestComponent } from './test/test.component';
 import { FooterComponent } from './ui/footer/footer.component';
 import { HeaderComponent } from './ui/header/header.component';
+import { CatalogMovieComponent } from './catalogs/catalog-movie/catalog-movie.component';
+import { CatalogSearchComponent } from './catalogs/catalog-search/catalog-search.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +57,9 @@ import { HeaderComponent } from './ui/header/header.component';
         MyCatalogsComponent,
         SvgIconComponent,
         CreateCatalogButtonComponent,
-        CatalogListComponent
+        CatalogListComponent,
+        CatalogMovieComponent,
+        CatalogSearchComponent
     ],
     imports: [
         NgbModule,

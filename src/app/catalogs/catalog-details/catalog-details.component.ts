@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IMovie } from '../../listing/listing.component';
-import { MoviesService } from '../../_services/movies.service';
+import { ActivatedRoute } from '@angular/router';
+import { CatalogsService } from 'src/app/_services/catalogs.service';
+import { MoviesService } from 'src/app/_services/movies.service';
 
 @Component({
     selector: 'app-catalog-details',
@@ -8,27 +9,28 @@ import { MoviesService } from '../../_services/movies.service';
     styleUrls: ['./catalog-details.component.scss']
 })
 export class CatalogDetailsComponent {
+    constructor(private route: ActivatedRoute, private catalogService: CatalogsService, private moviesService: MoviesService) { }
 
-    constructor(private moviesService: MoviesService) { }
+    videoURL: string = '';
+    orderObj: any;
+    details: any;
+    movieIds?: number[];
+    pages: number = 0;
+    page: number = 1;
+    collectionSize: number = 0;
 
-    movies: IMovie[] = [];
-    key: string = ""
+    ngOnInit(): void {
+        this.route.queryParamMap
+            .subscribe((params) => {
+                this.orderObj = { ...params.keys, ...params };
+                this.catalogService.getCatalogById(this.orderObj.params?.id).subscribe((result: any) => {
+                    this.details = result.foundCatalog
+                    this.movieIds = this.details?.filmIds
+                })
+            }, (error) => { console.error('An error occurred:', error) })
 
-    ngOnChanges(): void {
-        this.updateMovies('test')
-        console.log(this)
+
     }
 
-    updateMovies(key: string) {
-        this.moviesService.getSearch(key, 1).subscribe((result: any) => {
-            this.movies = result.results.map((el: any) => {
-                return {
-                    id: el.id,
-                    image: el.backdrop_path,
-                    title: el.title,
-                    subtitle: el.overview,
-                }
-            }).slice(0, 9)
-        })
-    }
+
 }

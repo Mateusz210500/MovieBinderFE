@@ -40,18 +40,17 @@
                     <a class="nav-link text-white"
                        routerLink="/profile">Profile</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white"
-                       id="navbarDropdownMenuLink"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
+                <li class="nav-item dropdown"
+                    ngbDropdown>
+                    <span class="nav-link dropdown-toggle text-white"
+                          id="dropdownBasic1"
+                          role="button"
+                          ngbDropdownToggle>
                         Catalogs
-                    </a>
+                    </span>
                     <ul class="dropdown-menu"
-                        aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item"
-                               routerLink="/createCatalog">Create Catalog</a></li>
+                        ngbDropdownMenu
+                        aria-labelledby="dropdownBasic1">
                         <li><a class="dropdown-item"
                                href="#">Browse catalogs</a></li>
                         <li><a class="dropdown-item"

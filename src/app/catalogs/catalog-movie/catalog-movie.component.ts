@@ -1,0 +1,44 @@
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { Component, Input } from '@angular/core';
+import { MoviesService } from 'src/app/_services/movies.service';
+
+interface Movie {
+    id?: string;
+    title?: string;
+    poster_path?: string
+    image?: string
+    subtitle?: string
+}
+
+@Component({
+    selector: 'app-catalog-movie',
+    templateUrl: './catalog-movie.component.html',
+    styleUrls: ['./catalog-movie.component.scss'],
+})
+export class CatalogMovieComponent {
+    @Input() id?: number;
+
+    movie: any = {};
+    showImage = true;
+    constructor(private moviesService: MoviesService, public breakpointObserver: BreakpointObserver) { }
+
+    ngOnInit(): void {
+        if (this?.id)
+            this.moviesService.getDetails(this.id).subscribe((result: any) => {
+                this.movie = result;
+                console.log(this)
+            }, (error) => { console.error('An error occurred:', error) })
+
+        this.breakpointObserver
+            .observe(['(min-width: 992px)', '(max-width: 992px)', '(max-width: 1200px)'])
+            .subscribe((state: BreakpointState) => {
+                if (state.breakpoints['(max-width: 992px)']) {
+                    this.showImage = false;
+                    console.log(this.showImage)
+                } else {
+                    this.showImage = true;
+                    console.log(this.showImage)
+                }
+            });
+    }
+}

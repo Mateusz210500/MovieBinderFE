@@ -1,7 +1,8 @@
 <div>
     <p>List of my catalogs:</p>
     <div class="list-group">
-        <a href="#"
+        <a [routerLink]="['/catalogDetails']"
+           [queryParams]="{ id: catalog.id}"
            class="list-group-item list-group-item-action"
            *ngFor="let catalog of myCatalogs">{{catalog.title}}</a>
     </div>

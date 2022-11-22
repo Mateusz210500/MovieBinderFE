@@ -1,6 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+export interface IMovie {
+    id: number;
+    image: string;
+    title?: string;
+    subtitle?: string;
+}
+
 @Injectable({
     providedIn: 'root'
 })

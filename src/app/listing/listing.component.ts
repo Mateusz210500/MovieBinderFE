@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { MoviesService } from '../_services/movies.service';
+import { IMovie, MoviesService } from '../_services/movies.service';
 
-export interface IMovie {
-    id: number;
-    image: string;
-    title?: string;
-    subtitle?: string;
-}
+
 
 @Component({
     selector: 'app-listing',
