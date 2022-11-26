@@ -6,12 +6,20 @@
              class="card-img-top p-2 ms-4"
              style="height: 5rem;"
              alt="{{movie.title}}">
-        <div class="col-12">
+        <div class="col-12"
+             [class.ms-4]="!movie.backdrop_path">
             <h5 class="card-title m-2">{{movie.title}}</h5>
             <p class="ms-2">{{movie.tagline}}</p>
         </div>
     </div>
-    <a [routerLink]="['/details']"
-       [queryParams]="{ id: movie.id}"
-       class="btn btn-outline-light m-2 me-4">View more</a>
+    <div class="d-flex align-items-center">
+        <app-add-movie-to-catalog *ngIf="catalogId && movieId"
+                                  [movieId]="movieId"
+                                  [catalogId]="catalogId"
+                                  (addedMovieEvent)="addedMovie()"
+                                  class="me-3"></app-add-movie-to-catalog>
+        <a [routerLink]="['/details']"
+           [queryParams]="{ id: movie.id}"
+           class="btn btn-outline-light m-2 me-4">View more</a>
+    </div>
 </div>

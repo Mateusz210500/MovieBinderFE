@@ -5,7 +5,8 @@
             <div class="bg-light text-black border-white p-1 px-3"
                  data-bs-dismiss="offcanvas"
                  id="button-addon2"
-                 role="button">
+                 role="button"
+                 (click)="searchMovies()">
                 <app-svg-icon class="bi bi-search"
                               name="search"
                               size="16px"
@@ -14,6 +15,7 @@
             </div>
             <input type="text"
                    class="form-control"
+                   [(ngModel)]="movieTitle"
                    placeholder="Movie title"
                    aria-label="Movie title"
                    aria-describedby="button-addon2"
@@ -21,3 +23,26 @@
         </div>
     </div>
 </div>
+<div class="d-flex flex-wrap justify-content-center p-3">
+    <ng-container *ngFor="let movie of movies">
+        <app-catalog-movie class="col-12"
+                           [movieId]="movie.id"
+                           (addedMovieEvent)="addedMovie()"
+                           [catalogId]="orderObj.params?.id"></app-catalog-movie>
+    </ng-container>
+</div>
+<div class="w-100 d-flex justify-content-center"
+     *ngIf="movies.length">
+    <ng-container *ngTemplateOutlet="paginator"></ng-container>
+</div>
+
+<ng-template #paginator>
+    <ngb-pagination [collectionSize]="collectionSize"
+                    [pageSize]="20"
+                    [(page)]="page"
+                    (pageChange)="loadPage(page)"
+                    [maxSize]="5"
+                    [rotate]="true"
+                    [ellipses]="false"
+                    [boundaryLinks]="true"></ngb-pagination>
+</ng-template>

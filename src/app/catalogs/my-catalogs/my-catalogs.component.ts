@@ -3,8 +3,7 @@ import { Catalog, CatalogsService } from 'src/app/_services/catalogs.service';
 
 @Component({
     selector: 'app-my-catalogs',
-    templateUrl: './my-catalogs.component.html',
-    styleUrls: ['./my-catalogs.component.scss']
+    templateUrl: './my-catalogs.component.html'
 })
 export class MyCatalogsComponent {
     myCatalogs: Catalog[] = []

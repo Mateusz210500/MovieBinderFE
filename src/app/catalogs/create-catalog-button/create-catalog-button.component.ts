@@ -6,8 +6,7 @@ import { FileService } from '../../_services/file.service';
 
 @Component({
     selector: 'app-create-catalog-button',
-    templateUrl: './create-catalog-button.component.html',
-    styleUrls: ['./create-catalog-button.component.scss']
+    templateUrl: './create-catalog-button.component.html'
 })
 export class CreateCatalogButtonComponent {
     closeResult = '';
@@ -46,11 +45,7 @@ export class CreateCatalogButtonComponent {
             title: this.CreateCatalogForm.controls.title.value,
             description: this.CreateCatalogForm.controls.description.value,
             file: withFile ? this.CreateCatalogForm.controls.file.value : undefined
-        }).subscribe(() => {
-            // this.updateCatalogsInfo();
-            this.modalService.dismissAll('submit');
-            this.createdCatalogEvent.emit();
-        }, (error) => { console.error('An error occurred:', error) })
+        }).subscribe(() => { }, (error) => { console.error('An error occurred:', error) })
     }
 
     open(content: TemplateRef<any>) {

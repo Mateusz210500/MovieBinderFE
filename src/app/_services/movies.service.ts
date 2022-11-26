@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface IMovie {
-    id: number;
+    id: string;
     image: string;
     title?: string;
     subtitle?: string;
@@ -47,7 +47,7 @@ export class MoviesService {
         return this.httpClient.get(this.PATH_OF_API + `/movie/${id}/videos`, { params: params })
     }
 
-    public getDetails(id: number,) {
+    public getDetails(id: string,) {
         let params = new HttpParams();
         params = params.append('api_key', this.API_KEY);
         params = params.append('language', 'en-US');

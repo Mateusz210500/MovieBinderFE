@@ -14,12 +14,20 @@ export class CatalogDetailsComponent {
     videoURL: string = '';
     orderObj: any;
     details: any;
-    movieIds?: number[];
+    movieIds?: string[];
     pages: number = 0;
     page: number = 1;
     collectionSize: number = 0;
 
+    addedMovie() {
+        this.catalogService.getCatalogById(this.orderObj.params?.id).subscribe((result: any) => {
+            this.details = result.foundCatalog
+            this.movieIds = this.details?.filmIds
+        })
+    }
+
     ngOnInit(): void {
+        console.log(this)
         this.route.queryParamMap
             .subscribe((params) => {
                 this.orderObj = { ...params.keys, ...params };
@@ -28,8 +36,6 @@ export class CatalogDetailsComponent {
                     this.movieIds = this.details?.filmIds
                 })
             }, (error) => { console.error('An error occurred:', error) })
-
-
     }
 
 

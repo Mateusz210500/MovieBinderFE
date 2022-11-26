@@ -31,6 +31,7 @@ import { FooterComponent } from './ui/footer/footer.component';
 import { HeaderComponent } from './ui/header/header.component';
 import { CatalogMovieComponent } from './catalogs/catalog-movie/catalog-movie.component';
 import { CatalogSearchComponent } from './catalogs/catalog-search/catalog-search.component';
+import { AddMovieToCatalogComponent } from './catalogs/add-movie-to-catalog/add-movie-to-catalog.component';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,8 @@ import { CatalogSearchComponent } from './catalogs/catalog-search/catalog-search
         CreateCatalogButtonComponent,
         CatalogListComponent,
         CatalogMovieComponent,
-        CatalogSearchComponent
+        CatalogSearchComponent,
+        AddMovieToCatalogComponent
     ],
     imports: [
         NgbModule,

@@ -1,5 +1,5 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MoviesService } from 'src/app/_services/movies.service';
 
 interface Movie {
@@ -16,17 +16,22 @@ interface Movie {
     styleUrls: ['./catalog-movie.component.scss'],
 })
 export class CatalogMovieComponent {
-    @Input() id?: number;
+    @Input() movieId?: string;
+    @Input() catalogId?: string;
+    @Output() addedMovieEvent = new EventEmitter();
 
     movie: any = {};
     showImage = true;
     constructor(private moviesService: MoviesService, public breakpointObserver: BreakpointObserver) { }
 
+    addedMovie() {
+        this.addedMovieEvent.emit();
+    }
+
     ngOnInit(): void {
-        if (this?.id)
-            this.moviesService.getDetails(this.id).subscribe((result: any) => {
+        if (this?.movieId)
+            this.moviesService.getDetails(this.movieId).subscribe((result: any) => {
                 this.movie = result;
-                console.log(this)
             }, (error) => { console.error('An error occurred:', error) })
 
         this.breakpointObserver
@@ -34,10 +39,8 @@ export class CatalogMovieComponent {
             .subscribe((state: BreakpointState) => {
                 if (state.breakpoints['(max-width: 992px)']) {
                     this.showImage = false;
-                    console.log(this.showImage)
                 } else {
                     this.showImage = true;
-                    console.log(this.showImage)
                 }
             });
     }
