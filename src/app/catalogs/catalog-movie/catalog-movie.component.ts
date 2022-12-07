@@ -18,14 +18,16 @@ interface Movie {
 export class CatalogMovieComponent {
     @Input() movieId?: string;
     @Input() catalogId?: string;
-    @Output() addedMovieEvent = new EventEmitter();
+    @Input() addButton: boolean = false;
+    @Input() removeButton?: boolean = false;
+    @Output() movieEvent = new EventEmitter();
 
     movie: any = {};
     showImage = true;
     constructor(private moviesService: MoviesService, public breakpointObserver: BreakpointObserver) { }
 
-    addedMovie() {
-        this.addedMovieEvent.emit();
+    addedRemovedMovie() {
+        this.movieEvent.emit();
     }
 
     ngOnInit(): void {

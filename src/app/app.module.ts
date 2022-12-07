@@ -32,6 +32,7 @@ import { HeaderComponent } from './ui/header/header.component';
 import { CatalogMovieComponent } from './catalogs/catalog-movie/catalog-movie.component';
 import { CatalogSearchComponent } from './catalogs/catalog-search/catalog-search.component';
 import { AddMovieToCatalogComponent } from './catalogs/add-movie-to-catalog/add-movie-to-catalog.component';
+import { RemoveMovieFromCatalogComponent } from './catalogs/remove-movie-from-catalog/remove-movie-from-catalog.component';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { AddMovieToCatalogComponent } from './catalogs/add-movie-to-catalog/add-
         CatalogListComponent,
         CatalogMovieComponent,
         CatalogSearchComponent,
-        AddMovieToCatalogComponent
+        AddMovieToCatalogComponent,
+        RemoveMovieFromCatalogComponent
     ],
     imports: [
         NgbModule,

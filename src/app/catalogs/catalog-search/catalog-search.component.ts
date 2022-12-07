@@ -7,7 +7,7 @@ import { IMovie, MoviesService } from 'src/app/_services/movies.service';
     templateUrl: './catalog-search.component.html'
 })
 export class CatalogSearchComponent {
-    @Output() addedMovieEvent = new EventEmitter();
+    @Output() movieEvent = new EventEmitter();
 
     movies: IMovie[] = [];
     pages: number = 0;
@@ -19,7 +19,7 @@ export class CatalogSearchComponent {
     constructor(private route: ActivatedRoute, private moviesService: MoviesService, private changeDetectorRef: ChangeDetectorRef) { }
 
     addedMovie() {
-        this.addedMovieEvent.emit();
+        this.movieEvent.emit();
     }
 
     ngOnInit() {

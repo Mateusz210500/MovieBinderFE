@@ -21,8 +21,12 @@
         <div class="d-flex flex-wrap m-3">
             <app-catalog-movie class="col-12"
                                *ngFor="let id of movieIds"
-                               [movieId]="id"></app-catalog-movie>
+                               [removeButton]="isAuthor"
+                               (movieEvent)="addedRemovedMovie()"
+                               [movieId]="id"
+                               [catalogId]="this.orderObj.params?.id"></app-catalog-movie>
         </div>
-        <app-catalog-search (addedMovieEvent)="addedMovie()"></app-catalog-search>
+        <app-catalog-search *ngIf="isAuthor"
+                            (movieEvent)="addedRemovedMovie()"></app-catalog-search>
     </div>
 </div>

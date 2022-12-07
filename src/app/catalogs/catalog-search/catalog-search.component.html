@@ -27,7 +27,8 @@
     <ng-container *ngFor="let movie of movies">
         <app-catalog-movie class="col-12"
                            [movieId]="movie.id"
-                           (addedMovieEvent)="addedMovie()"
+                           (movieEvent)="addedMovie()"
+                           [addButton]="true"
                            [catalogId]="orderObj.params?.id"></app-catalog-movie>
     </ng-container>
 </div>

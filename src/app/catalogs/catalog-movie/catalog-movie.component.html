@@ -13,10 +13,16 @@
         </div>
     </div>
     <div class="d-flex align-items-center">
-        <app-add-movie-to-catalog *ngIf="catalogId && movieId"
+        <app-remove-movie-from-catalog *ngIf="catalogId && movieId && removeButton"
+                                       [movieId]="movieId"
+                                       [catalogId]="catalogId"
+                                       (movieEvent)="addedRemovedMovie()"
+                                       class="me-3">
+        </app-remove-movie-from-catalog>
+        <app-add-movie-to-catalog *ngIf="catalogId && movieId && addButton"
                                   [movieId]="movieId"
                                   [catalogId]="catalogId"
-                                  (addedMovieEvent)="addedMovie()"
+                                  (movieEvent)="addedRemovedMovie()"
                                   class="me-3"></app-add-movie-to-catalog>
         <a [routerLink]="['/details']"
            [queryParams]="{ id: movie.id}"

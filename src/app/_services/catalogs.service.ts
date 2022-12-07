@@ -10,7 +10,7 @@ export interface Catalog {
     authorId: string;
 }
 
-export interface addMovieData {
+export interface addRemoveMovieData {
     movieId?: string,
     catalogId?: string
 }
@@ -36,7 +36,11 @@ export class CatalogsService {
         return this.httpClient.get(this.PATH_OF_API + `/catalogs/${id}`, { withCredentials: true })
     }
 
-    public addMovieToCatalog(data: addMovieData) {
+    public addMovieToCatalog(data: addRemoveMovieData) {
         return this.httpClient.post(this.PATH_OF_API + "/catalogs/addMovie", data, { withCredentials: true })
+    }
+
+    public removeMovieFromCatalog(data: addRemoveMovieData) {
+        return this.httpClient.post(this.PATH_OF_API + "/catalogs/removeMovie", data, { withCredentials: true })
     }
 }
