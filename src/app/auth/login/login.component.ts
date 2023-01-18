@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/_services/alert.service';
 import { UserService } from 'src/app/_services/auth.service';
 
 interface resultData {
@@ -16,7 +17,7 @@ interface resultData {
 export class LoginComponent {
     controls: { email: FormControl<string | null>; password: FormControl<string | null>; };
 
-    constructor(private userService: UserService, private router: Router) {
+    constructor(private userService: UserService, private router: Router, private alertService: AlertService) {
         localStorage.removeItem('token');
         this.controls = this.Login.controls;
     }
@@ -33,7 +34,10 @@ export class LoginComponent {
                     this.router.navigate(['']);
                     localStorage.setItem('token', result.spaToken)
                 }
-            }, (error) => { console.error('An error occurred:', error) })
+            }, (error) => {
+                console.error('An error occurred:', error);
+                this.alertService.addAlert(error.error.message, 'danger');
+            })
         }
     }
 

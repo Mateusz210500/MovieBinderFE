@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AlertService } from 'src/app/_services/alert.service';
 import { CatalogsService } from 'src/app/_services/catalogs.service';
 
 @Component({
@@ -10,12 +11,15 @@ export class AddMovieToCatalogComponent {
     @Input() catalogId?: string;
     @Output() movieEvent = new EventEmitter();
 
-    constructor(private catalogService: CatalogsService) { }
+    constructor(private catalogService: CatalogsService,private alertService: AlertService) { }
 
     add() {
         this.catalogService.addMovieToCatalog({
             movieId: this.movieId?.toString(),
             catalogId: this.catalogId,
-        }).subscribe(() => { this.movieEvent.emit(); }, (error) => { console.error('An error occurred:', error) })
+        }).subscribe(() => { this.movieEvent.emit(); }, (error) => {
+            console.error('An error occurred:', error);
+            this.alertService.addAlert(error.error.message, 'danger');
+        })
     }
 }

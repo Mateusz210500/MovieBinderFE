@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertService } from 'src/app/_services/alert.service';
 import { CatalogsService } from '../../_services/catalogs.service';
 import { FileService } from '../../_services/file.service';
 
@@ -13,7 +14,7 @@ export class CreateCatalogButtonComponent {
     file: File | null = null;
     @Output() createdCatalogEvent = new EventEmitter();
 
-    constructor(private modalService: NgbModal, private fileService: FileService, private catalogService: CatalogsService) { }
+    constructor(private modalService: NgbModal, private fileService: FileService, private catalogService: CatalogsService, private alertService: AlertService) { }
 
     CreateCatalogForm = new FormGroup({
         title: new FormControl("", [Validators.required]),
@@ -45,7 +46,10 @@ export class CreateCatalogButtonComponent {
             title: this.CreateCatalogForm.controls.title.value,
             description: this.CreateCatalogForm.controls.description.value,
             file: withFile ? this.CreateCatalogForm.controls.file.value : undefined
-        }).subscribe(() => { }, (error) => { console.error('An error occurred:', error) })
+        }).subscribe(() => { }, (error) => {
+            console.error('An error occurred:', error);
+            this.alertService.addAlert(error.error.message, 'danger');
+        })
     }
 
     open(content: TemplateRef<any>) {

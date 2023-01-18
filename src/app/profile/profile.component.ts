@@ -1,6 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertService } from '../_services/alert.service';
+import { Catalog, CatalogsService } from '../_services/catalogs.service';
 import { FileService } from '../_services/file.service';
 import { ProfileService } from '../_services/profile.service';
 
@@ -12,6 +14,7 @@ export interface IUser {
     nickname: string,
     backgroundColor: string,
     file?: string;
+    catalogs?: any[];
     updateAt: string,
 }
 
@@ -24,8 +27,9 @@ export class ProfileComponent implements OnInit {
     userData?: IUser;
     closeResult = '';
     file: File | null = null;
+    myCatalogs: Catalog[] = []
 
-    constructor(private profileService: ProfileService, private modalService: NgbModal, private fileService: FileService) { }
+    constructor(private profileService: ProfileService, private modalService: NgbModal, private fileService: FileService, private alertService: AlertService, private catalogsService: CatalogsService) { }
 
     ngOnInit(): void {
         this.updateUserInfo();
@@ -39,6 +43,9 @@ export class ProfileComponent implements OnInit {
                 about: this.userData?.about,
                 backgroundColor: this.userData?.backgroundColor,
             })
+        }, (error) => { console.error('An error occurred:', error) })
+        this.catalogsService.getMyCatalogs().subscribe((result: any) => {
+            this.myCatalogs = result.myCatalogs;
         }, (error) => { console.error('An error occurred:', error) })
     }
 
@@ -77,7 +84,10 @@ export class ProfileComponent implements OnInit {
         }).subscribe(() => {
             this.updateUserInfo();
             this.modalService.dismissAll('submit')
-        }, (error) => { console.error('An error occurred:', error) })
+        }, (error) => {
+            console.error('An error occurred:', error);
+            this.alertService.addAlert(error.error.message, 'danger');
+        })
     }
 
     open(content: TemplateRef<any>) {

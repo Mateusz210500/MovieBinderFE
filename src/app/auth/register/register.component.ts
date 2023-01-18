@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/_services/alert.service';
 import { UserService } from 'src/app/_services/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/_services/auth.service';
 export class RegisterComponent {
     controls: { email: FormControl<string | null>; password: FormControl<string | null>; nickname: FormControl<string | null>; };
 
-    constructor(private userService: UserService, private router: Router) {
+    constructor(private userService: UserService, private router: Router, private alertService: AlertService) {
         localStorage.removeItem('token')
         this.controls = this.Register.controls;
     }
@@ -26,7 +27,10 @@ export class RegisterComponent {
         if (this.Register.valid) {
             this.userService.register(this.Register.value).subscribe((result: any) => {
                 this.router.navigate(['login']);
-            }, (error) => { console.error('An error occurred:', error) })
+            }, (error) => {
+                console.error('An error occurred:', error);
+                this.alertService.addAlert(error.error.message, 'danger');
+            })
         }
     }
 

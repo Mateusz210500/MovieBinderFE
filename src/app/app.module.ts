@@ -9,10 +9,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AddMovieToCatalogComponent } from './catalogs/add-movie-to-catalog/add-movie-to-catalog.component';
 import { CatalogDetailsComponent } from './catalogs/catalog-details/catalog-details.component';
 import { CatalogListComponent } from './catalogs/catalog-list/catalog-list.component';
+import { CatalogMovieComponent } from './catalogs/catalog-movie/catalog-movie.component';
+import { CatalogSearchComponent } from './catalogs/catalog-search/catalog-search.component';
 import { CreateCatalogButtonComponent } from './catalogs/create-catalog-button/create-catalog-button.component';
 import { MyCatalogsComponent } from './catalogs/my-catalogs/my-catalogs.component';
+import { RemoveMovieFromCatalogComponent } from './catalogs/remove-movie-from-catalog/remove-movie-from-catalog.component';
+import { AlertTopLeftComponent } from './components/alert/alert.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { SearchComponent } from './components/search/search.component';
@@ -29,10 +34,7 @@ import { SafePipe } from './shared/pipes/safe.pipe';
 import { TestComponent } from './test/test.component';
 import { FooterComponent } from './ui/footer/footer.component';
 import { HeaderComponent } from './ui/header/header.component';
-import { CatalogMovieComponent } from './catalogs/catalog-movie/catalog-movie.component';
-import { CatalogSearchComponent } from './catalogs/catalog-search/catalog-search.component';
-import { AddMovieToCatalogComponent } from './catalogs/add-movie-to-catalog/add-movie-to-catalog.component';
-import { RemoveMovieFromCatalogComponent } from './catalogs/remove-movie-from-catalog/remove-movie-from-catalog.component';
+import { JwtService } from './_services/jwt.service';
 
 @NgModule({
     declarations: [
@@ -54,6 +56,7 @@ import { RemoveMovieFromCatalogComponent } from './catalogs/remove-movie-from-ca
         RatingComponent,
         FooterComponent,
         SafePipe,
+        AlertTopLeftComponent,
         ProfileComponent,
         SliderRatingComponent,
         MyCatalogsComponent,
@@ -74,7 +77,7 @@ import { RemoveMovieFromCatalogComponent } from './catalogs/remove-movie-from-ca
         FormsModule,
         ReactiveFormsModule
     ],
-    providers: [],
+    providers: [JwtService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
